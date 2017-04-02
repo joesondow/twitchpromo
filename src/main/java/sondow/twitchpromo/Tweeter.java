@@ -1,4 +1,4 @@
-package sondow.twitter;
+package sondow.twitchpromo;
 
 import twitter4j.Status;
 import twitter4j.Twitter;
