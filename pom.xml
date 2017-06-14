@@ -18,6 +18,13 @@
       <version>4.0.6</version>
     </dependency>
     <dependency>
+      <groupId>twitch-api-wrapper</groupId>
+      <artifactId>twitch-api-wrapper</artifactId>
+      <version>0.3</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/twitch-api-wrapper-0.3-jar-with-dependencies.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
