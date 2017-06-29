@@ -19,5 +19,5 @@ dependencies {
     compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version:'1.1.0'
     compile group: 'org.twitter4j', name: 'twitter4j-core', version:'4.0.6'
     testCompile group: 'junit', name: 'junit', version:'4.12'
-    system group: 'twitch-api-wrapper', name: 'twitch-api-wrapper', version:'0.3'
+    compile files('./src/main/resources/twitch-api-wrapper-0.3-jar-with-dependencies.jar')
 }
