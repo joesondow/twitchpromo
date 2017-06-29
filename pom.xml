@@ -22,7 +22,7 @@
       <artifactId>twitch-api-wrapper</artifactId>
       <version>0.3</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/resources/twitch-api-wrapper-0.3-jar-with-dependencies.jar</systemPath>
+      <systemPath>${project.basedir}/lib/twitch-api-wrapper-0.3-jar-with-dependencies.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
