@@ -3,3 +3,4 @@ target
 .settings
 twitter4j.properties
 twitch.properties
+/bin/
