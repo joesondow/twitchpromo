@@ -4,7 +4,15 @@ apply plugin: 'maven'
 group = 'sondow'
 version = '1.0.0'
 
-description = """twitchpromo"""
+description = """\
+Periodically pulls screenshots from 
+current live twitch stream and tweets 
+them in a thread with calls to action.
+------------------------------------------
+Project version: ${version}
+Gradle version: ${gradle.gradleVersion}
+------------------------------------------
+"""
 
 sourceCompatibility = 1.5
 targetCompatibility = 1.5
