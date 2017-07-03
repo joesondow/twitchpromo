@@ -11,14 +11,15 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * This class serves the dual purposes of checking whether the specified Twitch user is currently online, and
- * saving that user's latest preview image file if they are online.
+ * This class serves the dual purposes of checking whether the specified Twitch user is currently
+ * online, and saving that user's latest preview image file if they are online.
  *
  * @author @JoeSondow
  */
 public class TwitchImageDownloader {
 
-    public static DownloadResult checkAndDownload(String fileURL, String saveDir) throws IOException {
+    public static DownloadResult checkAndDownload(String fileURL, String saveDir)
+            throws IOException {
 
         URL url = new URL(fileURL);
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -28,12 +29,13 @@ public class TwitchImageDownloader {
         boolean isOnline;
         File file;
 
+        String jpgUrl404 = "https://static-cdn.jtvnw.net/ttv-static/404_preview-1280x720.jpg";
         if (HttpURLConnection.HTTP_MOVED_TEMP == responseCode) {
             // Redirect almost certainly means channel is offline.
-            String offlineJpgUrl = "https://static-cdn.jtvnw.net/ttv-static/404_preview-1280x720.jpg";
             String location = httpConn.getHeaderField("Location");
-            if (!offlineJpgUrl.equals(location)) {
-                throw new RuntimeException("Surprise redirect location: " + location + " instead of " + offlineJpgUrl);
+            if (!jpgUrl404.equals(location)) {
+                String msg = "Surprise redirect location: " + location + " instead of " + jpgUrl404;
+                throw new RuntimeException(msg);
             }
 
             isOnline = false;
@@ -43,7 +45,8 @@ public class TwitchImageDownloader {
 
             ReadableByteChannel rbc = Channels.newChannel(httpConn.getInputStream());
             String now = ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT);
-            String fileName = now + "-" + fileURL.substring(fileURL.lastIndexOf("/") + 1, fileURL.length());
+            String filename = fileURL.substring(fileURL.lastIndexOf("/") + 1, fileURL.length());
+            String fileName = now + "-" + filename;
 
             String saveFilePath = saveDir + File.separator + fileName;
             File downloadFolder = new File(saveDir);
@@ -61,7 +64,8 @@ public class TwitchImageDownloader {
             file = new File(saveFilePath);
 
         } else {
-            throw new RuntimeException("Surprise response code " + responseCode + " for url " + fileURL);
+            String msg = "Surprise response code " + responseCode + " for url " + fileURL;
+            throw new RuntimeException(msg);
         }
 
         return new DownloadResult(file, isOnline);

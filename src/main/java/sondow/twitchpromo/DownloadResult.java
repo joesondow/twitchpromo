@@ -3,8 +3,8 @@ package sondow.twitchpromo;
 import java.io.File;
 
 /**
- * Has a reference to the saved screenshot file if the Twitch user is online, or else indicates that the user is
- * offline.
+ * Has a reference to the saved screenshot file if the Twitch user is online, or else indicates that
+ * the user is offline.
  *
  * @author @JoeSondow
  */
